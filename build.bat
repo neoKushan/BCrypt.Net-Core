@@ -1,5 +1,5 @@
 dnu restore
 
-dun build
+dun build src\BCrypt.Net
 
-dnu pack
+dnu pack src\BCrypt.Net
