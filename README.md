@@ -1,7 +1,7 @@
 # BCrypt.Net-Core
 A .net Core port of BCrypt.net
 
-If you're working on a .net core application and need a version of BCRypt, this is a quick and dirty port of BCrypt.net.
+If you're working on a .net core application and need to use BCrypt to store passwords, this is a quick and dirty port of BCrypt.net.
 I have not tested using this on the full .net framework yet, only .net Core. It builds, compiles and the Unit tests pass. 
 
 # Disclaimer
