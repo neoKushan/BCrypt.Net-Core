@@ -1,0 +1,2 @@
+dnu restore
+dnu pack
