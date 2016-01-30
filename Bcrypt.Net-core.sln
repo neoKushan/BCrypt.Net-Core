@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{66EE1B79-B78A-421D-86BF-D59E021910A1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{11F9CFA2-0380-4432-8F52-BE3F78275318}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BCrypt.Net", "src\BCrypt.Net\BCrypt.Net.xproj", "{76EE74F9-DF31-401E-9BBC-3CA764E493C1}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BCrypt.Net.Test", "src\BCrypt.Net.Test\BCrypt.Net.Test.xproj", "{78126F8A-1C32-4893-8B65-843E8A426C58}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{76EE74F9-DF31-401E-9BBC-3CA764E493C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76EE74F9-DF31-401E-9BBC-3CA764E493C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76EE74F9-DF31-401E-9BBC-3CA764E493C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76EE74F9-DF31-401E-9BBC-3CA764E493C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78126F8A-1C32-4893-8B65-843E8A426C58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78126F8A-1C32-4893-8B65-843E8A426C58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78126F8A-1C32-4893-8B65-843E8A426C58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78126F8A-1C32-4893-8B65-843E8A426C58}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{76EE74F9-DF31-401E-9BBC-3CA764E493C1} = {66EE1B79-B78A-421D-86BF-D59E021910A1}
+		{78126F8A-1C32-4893-8B65-843E8A426C58} = {66EE1B79-B78A-421D-86BF-D59E021910A1}
+	EndGlobalSection
+EndGlobal
