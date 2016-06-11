@@ -1,9 +1,7 @@
 try
 {
-	dnvm upgrade
-	dnu restore .\src
-	dnu build .\src\BCrypt.Net-Core
-    dnu pack .\src\BCrypt.Net-Core
+	dotnet restore .\src
+    dotnet pack .\src\BCrypt.Net-Core --configuration Release --no-dependencies
 }
 catch
 {
