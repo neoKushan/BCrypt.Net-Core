@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Security.Cryptography;
 using System.Text;
 
 // namespace: BCrypt.Net
@@ -494,8 +495,9 @@ namespace BCrypt.Net
                 throw new ArgumentOutOfRangeException("workFactor", workFactor, "The work factor must be between 4 and 31 (inclusive)");
 
             byte[] rnd = new byte[BCRYPT_SALT_LEN];
-            Random rng = new Random();
-            rng.NextBytes(rnd);
+            RandomNumberGenerator rng = RandomNumberGenerator.Create();
+            rng.GetBytes(rnd);
+                  
 
             StringBuilder rs = new StringBuilder();
             rs.AppendFormat("$2a${0:00}$", workFactor);
