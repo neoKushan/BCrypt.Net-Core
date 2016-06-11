@@ -18,11 +18,12 @@
     },
   },
   "frameworks": {
+    "net20": {},
     "net35": {},
     "net40": {},
     "net45": {},
-    "net451": { },
-    "net452": { },
+    "net451": {},
+    "net452": {},
     "netstandard1.3": {
       "dependencies": {
         "Microsoft.CSharp": "4.0.1-rc2-24027",
