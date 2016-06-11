@@ -498,7 +498,6 @@ namespace BCrypt.Net
             RandomNumberGenerator rng = RandomNumberGenerator.Create();
             rng.GetBytes(rnd);
                   
-
             StringBuilder rs = new StringBuilder();
             rs.AppendFormat("$2a${0:00}$", workFactor);
             rs.Append(EncodeBase64(rnd, rnd.Length));
