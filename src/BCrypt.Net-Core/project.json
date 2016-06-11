@@ -1,31 +1,31 @@
 ﻿{
-  "version": "1.0.1-*",
+  "title": "BCrypt.Net-Core",
+  "version": "1.0.2-*",
   "description": "BCrypt.Net .net Core Class Library",
   "authors": [ "Steve Donaghy (donaghy.steve@googlemail.com)" ],
-  "tags": [ "bcrypt", "Cryptography" ],
-  "projectUrl": "https://github.com/neoKushan/BCrypt.Net-Core",
-  "licenseUrl": "",
+
+  "packOptions": {
+    "summary": "BCrypt.Net .net Core Class Library",
+    "tags": [ "bcrypt", "Cryptography" ],
+    "owners": [ "Steve Donaghy (donaghy.steve@googlemail.com)" ],
+    "releaseNotes": "Updated to RC2",
+    "iconUrl": "https://example.com/an-icon.png",
+    "projectUrl": "https://github.com/neoKushan/BCrypt.Net-Core",
+    "licenseUrl": "https://example.com/license",
+    "requireLicenseAcceptance": false,
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/neoKushan/BCrypt.Net-Core"
+    },
+  },
 
   "frameworks": {
-    "net451": { },
-    "dnxcore50": {
+    "netstandard1.0": {
       "dependencies": {
-        "Microsoft.CSharp": "4.0.1-beta-23516",
-        "System.Collections": "4.0.11-beta-23516",
-        "System.Linq": "4.0.1-beta-23516",
-        "System.Runtime": "4.0.21-beta-23516",
-        "System.Runtime.Extensions": "4.0.11-beta-23516",
-        "System.Threading": "4.0.11-beta-23516"
-      }
-    },
-    "dotnet5.4": {
-      "dependencies": {
-        "Microsoft.CSharp": "4.0.1-beta-23516",
-        "System.Collections": "4.0.11-beta-23516",
-        "System.Linq": "4.0.1-beta-23516",
-        "System.Runtime": "4.0.21-beta-23516",
-        "System.Runtime.Extensions": "4.0.11-beta-23516",
-        "System.Threading": "4.0.11-beta-23516"
+        "Microsoft.CSharp": "4.0.1-rc2-24027",
+        "System.Runtime": "4.1.0-rc2-24027",
+        "System.Runtime.Extensions": "4.1.0-rc2-24027",
+        "System.Diagnostics.Debug": "4.0.11-rc2-24027"
       }
     }
   }
