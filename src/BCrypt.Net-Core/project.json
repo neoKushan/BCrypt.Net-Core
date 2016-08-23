@@ -1,6 +1,6 @@
 {
   "title": "BCrypt.Net-Core",
-  "version": "1.0.2-*",
+  "version": "1.1.0-*",
   "description": "BCrypt.Net .net Core Class Library",
   "authors": [ "Steve Donaghy (donaghy.steve@googlemail.com)" ],
   "packOptions": {
