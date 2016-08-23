@@ -7,10 +7,8 @@
     "summary": "BCrypt.Net .net Core Class Library",
     "tags": [ "bcrypt", "Cryptography" ],
     "owners": [ "Steve Donaghy (donaghy.steve@googlemail.com)" ],
-    "releaseNotes": "Updated to RC2",
-    "iconUrl": "https://example.com/an-icon.png",
+    "releaseNotes": "Updated to support .net core RTM",
     "projectUrl": "https://github.com/neoKushan/BCrypt.Net-Core",
-    "licenseUrl": "https://example.com/license",
     "requireLicenseAcceptance": false,
     "repository": {
       "type": "git",
