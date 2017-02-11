@@ -773,7 +773,7 @@ namespace BCrypt.Net
             }
 
             var rounds = 1u << logRounds;
-            if (rounds > 0)
+            if (!(rounds > 0))
             {
                 // We overflowed rounds at 31 - added safety check
                 throw new ArgumentException("Rounds must be > 0", nameof(logRounds));
