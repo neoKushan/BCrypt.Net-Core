@@ -15,10 +15,7 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-using System;
 using System.Diagnostics;
-using System.Collections.Generic;
-using System.Linq;
 using Xunit;
 
 namespace BCrypt.Net.Test
@@ -28,7 +25,7 @@ namespace BCrypt.Net.Test
     /// </summary>
     public class TestBCrypt
     {
-        readonly string[,] _TestVectors = {
+        readonly string[,] _testVectors = {
 			{ "",                                   "$2b$06$DCq7YPn5Rq63x1Lad4cll.",    "$2b$06$DCq7YPn5Rq63x1Lad4cll.TV4S6ytwfsfvkgY8jIucDrjc8deX1s." },
 			{ "",                                   "$2b$08$HqWuK6/Ng6sg9gQzbLrgb.",    "$2b$08$HqWuK6/Ng6sg9gQzbLrgb.Tl.ZHfXLhvt/SgVyWhQqgqcZ7ZuUtye" },
 			{ "",                                   "$2b$10$k1wbIrmNyFAPwPVPSVa/ze",    "$2b$10$k1wbIrmNyFAPwPVPSVa/zecw2BCEnBwVS2GbrmgzxFUOqW9dk4TCW" },
@@ -51,7 +48,7 @@ namespace BCrypt.Net.Test
 			{ "~!@#$%^&*()      ~!@#$%^&*()PNBFRD", "$2b$12$WApznUOJfkEGSmYRfnkrPO",    "$2b$12$WApznUOJfkEGSmYRfnkrPOr466oFDCaj4b6HY3EXGvfxm43seyhgC" },
 		};
 
-        readonly string[,] _DifferentRevisionTestVectors = {
+        readonly string[,] _differentRevisionTestVectors = {
             { "",                                   "$2a$06$DCq7YPn5Rq63x1Lad4cll.",    "$2b$06$DCq7YPn5Rq63x1Lad4cll.TV4S6ytwfsfvkgY8jIucDrjc8deX1s." },
             { "",                                   "$2b$06$DCq7YPn5Rq63x1Lad4cll.",    "$2b$06$DCq7YPn5Rq63x1Lad4cll.TV4S6ytwfsfvkgY8jIucDrjc8deX1s." },
             { "",                                   "$2x$06$DCq7YPn5Rq63x1Lad4cll.",    "$2b$06$DCq7YPn5Rq63x1Lad4cll.TV4S6ytwfsfvkgY8jIucDrjc8deX1s." },
@@ -82,11 +79,11 @@ namespace BCrypt.Net.Test
         {
             Trace.Write("BCrypt.HashPassword(): ");
             var sw = Stopwatch.StartNew();
-            for (var i = 0; i < _TestVectors.Length / 3; i++)
+            for (var i = 0; i < _testVectors.Length / 3; i++)
             {
-                var plain = _TestVectors[i, 0];
-                var salt = _TestVectors[i, 1];
-                var expected = _TestVectors[i, 2];
+                var plain = _testVectors[i, 0];
+                var salt = _testVectors[i, 1];
+                var expected = _testVectors[i, 2];
                 var hashed = BCrypt.HashPassword(plain, salt);
                 Assert.Equal(hashed, expected);
                 Trace.Write(".");
@@ -105,9 +102,9 @@ namespace BCrypt.Net.Test
             for (var i = 4; i <= 12; i++)
             {
                 Trace.Write(" " + i + ":");
-                for (var j = 0; j < _TestVectors.Length / 3; j++)
+                for (var j = 0; j < _testVectors.Length / 3; j++)
                 {
-                    var plain = _TestVectors[j, 0];
+                    var plain = _testVectors[j, 0];
                     var salt = BCrypt.GenerateSalt(i);
                     var hashed1 = BCrypt.HashPassword(plain, salt);
                     var hashed2 = BCrypt.HashPassword(plain, hashed1);
@@ -122,9 +119,9 @@ namespace BCrypt.Net.Test
         public void TestGenerateSaltWithMaxWorkFactor()
         {
             Trace.Write("BCrypt.GenerateSalt(31):");
-            for (var j = 0; j < _TestVectors.Length / 3; j++)
+            for (var j = 0; j < _testVectors.Length / 3; j++)
             {
-                var plain = _TestVectors[j, 0];
+                var plain = _testVectors[j, 0];
                 var salt = BCrypt.GenerateSalt(31);
                 var hashed1 = BCrypt.HashPassword(plain, salt);
                 var hashed2 = BCrypt.HashPassword(plain, hashed1);
@@ -141,9 +138,9 @@ namespace BCrypt.Net.Test
         public void TestGenerateSalt()
         {
             Trace.Write("BCrypt.GenerateSalt(): ");
-            for (var i = 0; i < _TestVectors.Length / 3; i++)
+            for (var i = 0; i < _testVectors.Length / 3; i++)
             {
-                var plain = _TestVectors[i, 0];
+                var plain = _testVectors[i, 0];
                 var salt = BCrypt.GenerateSalt();
                 var hashed1 = BCrypt.HashPassword(plain, salt);
                 var hashed2 = BCrypt.HashPassword(plain, hashed1);
@@ -161,10 +158,10 @@ namespace BCrypt.Net.Test
         public void TestVerifyPasswordSuccess()
         {
             Trace.Write("BCrypt.Verify w/ good passwords: ");
-            for (var i = 0; i < _TestVectors.Length / 3; i++)
+            for (var i = 0; i < _testVectors.Length / 3; i++)
             {
-                var plain = _TestVectors[i, 0];
-                var expected = _TestVectors[i, 2];
+                var plain = _testVectors[i, 0];
+                var expected = _testVectors[i, 2];
                 Assert.True(BCrypt.Verify(plain, expected));
                 Trace.Write(".");
             }
@@ -179,10 +176,10 @@ namespace BCrypt.Net.Test
         public void TestVerifyPasswordWithDifferentRevisionsSuccess()
         {
             Trace.Write("BCrypt.Verify with good passwords from revisions a, x and y: ");
-            for (var i = 0; i < _DifferentRevisionTestVectors.Length / 3; i++)
+            for (var i = 0; i < _differentRevisionTestVectors.Length / 3; i++)
             {
-                var plain = _DifferentRevisionTestVectors[i, 0];
-                var expected = _DifferentRevisionTestVectors[i, 2];
+                var plain = _differentRevisionTestVectors[i, 0];
+                var expected = _differentRevisionTestVectors[i, 2];
                 Assert.True(BCrypt.Verify(plain, expected));
                 Trace.Write(".");
             }
@@ -197,11 +194,11 @@ namespace BCrypt.Net.Test
         public void TestVerifyPasswordFailure()
         {
             Trace.Write("BCrypt.Verify w/ bad passwords: ");
-            for (var i = 0; i < _TestVectors.Length / 3; i++)
+            for (var i = 0; i < _testVectors.Length / 3; i++)
             {
-                var brokenIndex = (i + 4) % (_TestVectors.Length / 3);
-                var plain = _TestVectors[i, 0];
-                var expected = _TestVectors[brokenIndex, 2];
+                var brokenIndex = (i + 4) % (_testVectors.Length / 3);
+                var plain = _testVectors[i, 0];
+                var expected = _testVectors[brokenIndex, 2];
                 Assert.False(BCrypt.Verify(plain, expected));
                 Trace.Write(".");
             }
