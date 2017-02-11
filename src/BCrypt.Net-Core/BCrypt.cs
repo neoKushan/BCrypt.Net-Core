@@ -453,7 +453,7 @@ namespace BCrypt.Net
             else
             {
                 minor = salt[2];
-                if (minor != 'a' || salt[3] != '$')
+                if (!(minor == 'a' || minor =='b' || minor=='x' || minor=='y') || salt[3] != '$')
                     throw new SaltParseException("Invalid salt revision");
                 startingOffset = 4;
             }
@@ -499,7 +499,7 @@ namespace BCrypt.Net
             rng.GetBytes(rnd);
                   
             StringBuilder rs = new StringBuilder();
-            rs.AppendFormat("$2a${0:00}$", workFactor);
+            rs.AppendFormat("$2b${0:00}$", workFactor);
             rs.Append(EncodeBase64(rnd, rnd.Length));
             return rs.ToString();
         }
