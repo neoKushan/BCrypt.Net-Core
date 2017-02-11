@@ -436,10 +436,10 @@ namespace BCrypt.Net
         public static string HashPassword(string input, string salt)
         {
             if (input == null)
-                throw new ArgumentNullException("input");
+                throw new ArgumentNullException(nameof(input));
 
             if (string.IsNullOrEmpty(salt))
-                throw new ArgumentException("Invalid salt", "salt");
+                throw new ArgumentException("Invalid salt", nameof(salt));
 
             // Determinthe starting offset and validate the salt
             int startingOffset;
@@ -490,7 +490,7 @@ namespace BCrypt.Net
         public static string GenerateSalt(int workFactor)
         {
             if (workFactor < 4 || workFactor > 31)
-                throw new ArgumentOutOfRangeException("workFactor", workFactor, "The work factor must be between 4 and 31 (inclusive)");
+                throw new ArgumentOutOfRangeException(nameof(workFactor), workFactor, "The work factor must be between 4 and 31 (inclusive)");
 
             var rnd = new byte[BcryptSaltLen];
             var rng = RandomNumberGenerator.Create();
@@ -536,7 +536,7 @@ namespace BCrypt.Net
         private static string EncodeBase64(byte[] byteArray, int length)
         {
             if (length <= 0 || length > byteArray.Length)
-                throw new ArgumentException("Invalid length", "length");
+                throw new ArgumentException("Invalid length", nameof(length));
 
             var off = 0;
             var rs = new StringBuilder();
@@ -583,7 +583,7 @@ namespace BCrypt.Net
                 outputLength = 0;
 
             if (maximumBytes <= 0)
-                throw new ArgumentException("Invalid maximum bytes value", "maximumBytes");
+                throw new ArgumentException("Invalid maximum bytes value", nameof(maximumBytes));
 
             // TODO: update to use a List<byte> - it's only ever 16 bytes, so it's not a big deal
             var rs = new StringBuilder();
