@@ -25,7 +25,6 @@
     "netstandard1.3": {
       "dependencies": {
         "Microsoft.CSharp": "4.3.0",
-        "System.Diagnostics.Debug": "4.3.0",
         "System.Runtime.Extensions": "4.3.0",
         "System.Security.Cryptography.Algorithms": "4.3.0"
       }

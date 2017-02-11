@@ -16,8 +16,6 @@
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -770,14 +768,22 @@ namespace BCrypt.Net
             int clen = cdata.Length;
 
             if (logRounds < 4 || logRounds > 31)
-                throw new ArgumentException("Bad number of rounds", "logRounds");
+            {
+                throw new ArgumentException("Bad number of rounds", nameof(logRounds));
+            }
+
+            var rounds = 1u << logRounds;
+            if (rounds > 0)
+            {
+                // We overflowed rounds at 31 - added safety check
+                throw new ArgumentException("Rounds must be > 0", nameof(logRounds));
+            }
 
             if (saltBytes.Length != BCRYPT_SALT_LEN)
-                throw new ArgumentException("Bad salt Length", "saltBytes");
-
-            uint rounds = 1u << logRounds;
-            Debug.Assert(rounds > 0, "Rounds must be > 0"); // We overflowed rounds at 31 - added safety check
-
+            {
+                throw new ArgumentException("Bad salt Length", nameof(saltBytes));
+            }
+           
             InitializeKey();
             EKSKey(saltBytes, inputBytes);
 
