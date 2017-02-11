@@ -1,13 +1,13 @@
 {
   "title": "BCrypt.Net-Core",
-  "version": "1.1.0-*",
+  "version": "1.2.0-*",
   "description": "BCrypt.Net .net Core Class Library",
   "authors": [ "Steve Donaghy (donaghy.steve@googlemail.com)" ],
   "packOptions": {
     "summary": "BCrypt.Net .net Core Class Library",
     "tags": [ "bcrypt", "Cryptography" ],
     "owners": [ "Steve Donaghy (donaghy.steve@googlemail.com)" ],
-    "releaseNotes": "Updated to support .net core RTM",
+    "releaseNotes": "Added support for accepting revision b, x and y salts. Also generates revision b by default.",
     "projectUrl": "https://github.com/neoKushan/BCrypt.Net-Core",
     "requireLicenseAcceptance": false,
     "repository": {
