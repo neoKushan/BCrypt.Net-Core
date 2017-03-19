@@ -1,7 +1,7 @@
 ﻿// 
 // Copyright (c) 2006 Damien Miller <djm@mindrot.org>
 // Copyright (c) 2013 Ryan D. Emerle
-// Copyright(c) 2016 Stephen Donaghy(.net Core port)
+// Copyright (c) 2016 Stephen Donaghy (.net Core port)
 // 
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -25,7 +25,7 @@ namespace BCrypt.Net.Test
     /// </summary>
     public class TestBCrypt
     {
-        readonly string[,] _testVectors = {
+        private readonly string[,] _testVectors = {
 			{ "",                                   "$2b$06$DCq7YPn5Rq63x1Lad4cll.",    "$2b$06$DCq7YPn5Rq63x1Lad4cll.TV4S6ytwfsfvkgY8jIucDrjc8deX1s." },
 			{ "",                                   "$2b$08$HqWuK6/Ng6sg9gQzbLrgb.",    "$2b$08$HqWuK6/Ng6sg9gQzbLrgb.Tl.ZHfXLhvt/SgVyWhQqgqcZ7ZuUtye" },
 			{ "",                                   "$2b$10$k1wbIrmNyFAPwPVPSVa/ze",    "$2b$10$k1wbIrmNyFAPwPVPSVa/zecw2BCEnBwVS2GbrmgzxFUOqW9dk4TCW" },
@@ -48,7 +48,7 @@ namespace BCrypt.Net.Test
 			{ "~!@#$%^&*()      ~!@#$%^&*()PNBFRD", "$2b$12$WApznUOJfkEGSmYRfnkrPO",    "$2b$12$WApznUOJfkEGSmYRfnkrPOr466oFDCaj4b6HY3EXGvfxm43seyhgC" },
 		};
 
-        readonly string[,] _differentRevisionTestVectors = {
+        private readonly string[,] _differentRevisionTestVectors = {
             { "",                                   "$2a$06$DCq7YPn5Rq63x1Lad4cll.",    "$2b$06$DCq7YPn5Rq63x1Lad4cll.TV4S6ytwfsfvkgY8jIucDrjc8deX1s." },
             { "",                                   "$2b$06$DCq7YPn5Rq63x1Lad4cll.",    "$2b$06$DCq7YPn5Rq63x1Lad4cll.TV4S6ytwfsfvkgY8jIucDrjc8deX1s." },
             { "",                                   "$2x$06$DCq7YPn5Rq63x1Lad4cll.",    "$2b$06$DCq7YPn5Rq63x1Lad4cll.TV4S6ytwfsfvkgY8jIucDrjc8deX1s." },
@@ -147,6 +147,18 @@ namespace BCrypt.Net.Test
                 Assert.Equal(hashed1, hashed2);
                 Trace.Write(".");
             }
+            Trace.WriteLine("");
+        }
+
+        [Fact]
+        public void TestGenerateSaltWithDifferentRevision()
+        {
+            Trace.Write("BCrypt.GenerateSalt(SaltRevision.Revision2X): ");
+            var salt = BCrypt.GenerateSalt(SaltRevision.Revision2X);
+            var revision = salt.Split('$')[1];
+            Assert.Equal("2x", revision);
+            Trace.Write(".");
+            
             Trace.WriteLine("");
         }
 
