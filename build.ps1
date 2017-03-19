@@ -1,6 +1,6 @@
 try
 {
-	dotnet restore .\src
+	dotnet restore .\src\BCrypt.Net-Core
     dotnet pack .\src\BCrypt.Net-Core --configuration Release
 }
 catch

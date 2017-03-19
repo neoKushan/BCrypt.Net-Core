@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>BCrypt.Net .net Core Class Library</Description>
+    <AssemblyTitle>BCrypt.Net-Core</AssemblyTitle>
+    <VersionPrefix>1.3.0</VersionPrefix>
+    <Authors>Steve Donaghy (donaghy.steve@googlemail.com)</Authors>
+    <TargetFrameworks>net40;net45;net451;net452;netstandard1.3</TargetFrameworks>
+    <AssemblyName>BCrypt.Net-Core</AssemblyName>
+    <PackageId>BCrypt.Net-Core</PackageId>
+    <PackageTags>bcrypt;Cryptography</PackageTags>
+    <PackageReleaseNotes>Added support for accepting revision b, x and y salts. Generates revision b by default. Migrated to VS2017 project type. Dropped support for .net versions lower than 4.0. Added Safe compare to prevent timing attacks.</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/neoKushan/BCrypt.Net-Core</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/neoKushan/BCrypt.Net-Core</RepositoryUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net20|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.3' ">
+    <PackageReference Include="System.Runtime.Extensions" Version="4.1.0" />
+  </ItemGroup>
+
+</Project>
