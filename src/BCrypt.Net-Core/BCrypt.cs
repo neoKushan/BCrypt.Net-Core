@@ -521,7 +521,7 @@ namespace BCrypt.Net
         /// <returns>true if the passwords match, false otherwise.</returns>
         public static bool Verify(string text, string hash)
         {
-            return hash == HashPassword(text, hash);
+            return SafeEquals(hash, HashPassword(text, hash));
         }
 
         /// <summary>
@@ -809,6 +809,24 @@ namespace BCrypt.Net
             }
             return ret;
         }
+
+        /// <summary>
+        /// Checks if two strings are equal. Compares every char to prevent timing attacks.
+        /// </summary>
+        /// <param name="a">String to compare.</param>
+        /// <param name="b">String to compare.</param>
+        /// <returns>True if both strings are equal</returns>
+        private static bool SafeEquals(string a, string b)
+        {
+            var diff = (uint) a.Length ^ (uint) b.Length;
+
+            for (var i = 0; i < a.Length && i < b.Length; i++)
+            {
+                diff |= (uint) a[i] ^ (uint) b[i];
+            }
+
+            return diff == 0;
+        } 
     }
 }
 
