@@ -1,9 +1,7 @@
 # BCrypt.Net-Core
-A .net Core port of BCrypt.net
+A .net Core port of BCrypt.net, with some feature and security enhancements.
 
-If you're working on a .net core application and need to use BCrypt to store passwords, this is a quick and dirty port of BCrypt.net. 
-
-I have tested using this library on both the full .net 4.5 framework, as well as .net core RC1 through to RTM.
+Compatible with both the full .net framework and .net core (Netstandard 1.3).
 
 It should be a drop-in replacement for BCrypt.net as the namespaces are unchanged.
 
