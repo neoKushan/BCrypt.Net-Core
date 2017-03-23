@@ -13,6 +13,9 @@
     <PackageProjectUrl>https://github.com/neoKushan/BCrypt.Net-Core</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/neoKushan/BCrypt.Net-Core</RepositoryUrl>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\assets\Bcrypt.net-CoreStrongName.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>False</DelaySign>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net20|AnyCPU'">
