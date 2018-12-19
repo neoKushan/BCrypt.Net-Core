@@ -16,6 +16,7 @@
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 using System;
+using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -531,6 +532,48 @@ namespace BCrypt.Net
         }
 
         /// <summary>
+        /// Returns work factor that is used to generated the hash
+        /// </summary>
+        /// <param name="hash"></param>
+        /// <returns></returns>
+        public static int GetPasswordCostFactor(string hashedPassword)
+        {
+            if (string.IsNullOrEmpty(hashedPassword))
+            {
+                throw new ArgumentNullException(nameof(hashedPassword), "Invalid password");
+            }
+
+            if (hashedPassword.Length < 7)
+            {
+                throw new ArgumentException("Invalid password", nameof(hashedPassword));
+            }
+
+            if (hashedPassword[0] != '$' || hashedPassword[1] != '2')
+            {
+                throw new SaltParseException("Invalid salt version");
+            }
+
+            //We assume any hashed password should have one of these prefixes, otherwise we throw an exception
+            //SaltRevision.Revision2 = "$2$"
+            //SaltRevision.Revision2A = "$2a$"
+            //SaltRevision.Revision2B = "$2b$"
+            //SaltRevision.Revision2X = "$2x$"
+            //SaltRevision.Revision2Y = "$2y$"
+            //A password sample: $2b$10$TwentytwocharactersaltThirtyonecharacterspasswordhash
+            //$==$==$======================-------------------------------
+            var costFactorStartIndex = GetCostFactorStartIndex(hashedPassword);
+
+            //If the followed character after cost factor is not $, then it might be some invalid hash
+            if (hashedPassword[costFactorStartIndex + 2] != '$')
+            {
+                throw new InvalidDataException("Missing salt rounds");
+            }
+
+            var result = int.Parse(hashedPassword.Substring(costFactorStartIndex, 2));
+            return result;
+        }
+
+        /// <summary>
         ///  Encode a byte array using bcrypt's slightly-modified base64 encoding scheme. Note that this
         ///  is *not* compatible with the standard MIME-base64 encoding.
         /// </summary>
@@ -855,6 +898,28 @@ namespace BCrypt.Net
                     return "2y";
                 default:
                     throw new ArgumentOutOfRangeException(nameof(saltSaltRevision), saltSaltRevision, null);
+            }
+        }
+
+        /// <summary>
+        /// Return starting Index of a cost factor from a hashed password
+        /// </summary>
+        /// <param name="hash"></param>
+        /// <returns></returns>
+        private static int GetCostFactorStartIndex(string password)
+        {
+            var uniqueIdentifier = password[2];
+            switch (uniqueIdentifier)
+            {
+                case '$':
+                    return 3;
+                case 'a':
+                case 'b':
+                case 'x':
+                case 'y':
+                    return 4;
+                default:
+                    throw new SaltParseException("Invalid salt revision");
             }
         }
     }
