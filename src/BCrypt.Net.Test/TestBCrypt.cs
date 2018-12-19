@@ -242,11 +242,10 @@ namespace BCrypt.Net.Test
         */
 
         [Fact]
-        public void TestGetPasswordCostFactor()
+        public void TestGetPasswordWorkFactor()
         {
             var pw1 = "ππππππππ";
             var pw2 = "????????";
-
 
             var h1 = BCrypt.HashPassword(pw1, BCrypt.GenerateSalt());
             var costFactor = BCrypt.GetPasswordWorkFactor(h1);
