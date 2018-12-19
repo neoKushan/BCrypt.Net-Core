@@ -534,7 +534,7 @@ namespace BCrypt.Net
         /// <summary>
         /// Returns work factor from the generated hash
         /// </summary>
-        /// <param name="hash"></param>
+        /// <param name="hashedPassword"></param>
         /// <returns></returns>
         public static int GetPasswordWorkFactor(string hashedPassword)
         {
@@ -561,15 +561,15 @@ namespace BCrypt.Net
             //SaltRevision.Revision2Y = "$2y$"
             //A password sample: $2b$10$TwentytwocharactersaltThirtyonecharacterspasswordhash
             //$==$==$======================-------------------------------
-            var costFactorStartIndex = GetWorkFactorStartIndex(hashedPassword);
+            var workFactorStartIndex = GetWorkFactorStartIndex(hashedPassword);
 
             //If the followed character after work factor is not $, then it might be some invalid hash
-            if (hashedPassword[costFactorStartIndex + 2] != '$')
+            if (hashedPassword[workFactorStartIndex + 2] != '$')
             {
                 throw new InvalidDataException("Missing salt rounds");
             }
 
-            var result = int.Parse(hashedPassword.Substring(costFactorStartIndex, 2));
+            var result = int.Parse(hashedPassword.Substring(workFactorStartIndex, 2));
             return result;
         }
 
@@ -902,13 +902,13 @@ namespace BCrypt.Net
         }
 
         /// <summary>
-        /// Return starting Index of a work factor from a hashed password
+        /// Return starting index of a work factor from a hashed password
         /// </summary>
         /// <param name="hash"></param>
         /// <returns></returns>
-        private static int GetWorkFactorStartIndex(string password)
+        private static int GetWorkFactorStartIndex(string hash)
         {
-            var uniqueIdentifier = password[2];
+            var uniqueIdentifier = hash[2];
             switch (uniqueIdentifier)
             {
                 case '$':
