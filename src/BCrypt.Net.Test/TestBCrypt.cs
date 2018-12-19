@@ -236,5 +236,29 @@ namespace BCrypt.Net.Test
             Trace.Write(".");
             Trace.WriteLine("");
         }
+
+        /**
+        * Test method for 'BCrypt.GetPasswordWorkFactor(string)'
+        */
+
+        [Fact]
+        public void TestGetPasswordCostFactor()
+        {
+            var pw1 = "ππππππππ";
+            var pw2 = "????????";
+
+
+            var h1 = BCrypt.HashPassword(pw1, BCrypt.GenerateSalt());
+            var costFactor = BCrypt.GetPasswordWorkFactor(h1);
+            Assert.True(costFactor == 10, "The work factor should be 10, which is the default value");
+            Trace.Write(".");
+            Trace.WriteLine("");
+
+            var h2 = BCrypt.HashPassword(pw2, BCrypt.GenerateSalt(12));
+            costFactor = BCrypt.GetPasswordWorkFactor(h2);
+            Assert.True(costFactor == 12, "The work factor should be 12, which we sent to 'BCrypt.GenerateSalt(xx)'");
+            Trace.Write(".");
+            Trace.WriteLine("");
+        }
     }
 }
