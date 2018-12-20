@@ -9,7 +9,9 @@
     <AssemblyName>BCrypt.Net-Core</AssemblyName>
     <PackageId>BCrypt.Net-Core</PackageId>
     <PackageTags>bcrypt;Cryptography</PackageTags>
-    <PackageReleaseNotes>Added support for netstandard 2.0, which should simplify package references for some users.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added support for netstandard 2.0, which should simplify package references for some users.
+Added Sourcelink support (Thanks to @cmendible)
+Added method to extract work factor (Thanks to @SureshAmudalapalli)</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/neoKushan/BCrypt.Net-Core</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/neoKushan/BCrypt.Net-Core</RepositoryUrl>
@@ -29,7 +31,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-63127-02" PrivateAssets="All" Condition="'$(TargetFramework)'=='netstandard1.3'"/>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-63127-02" PrivateAssets="All" Condition="'$(TargetFramework)'=='netstandard1.3'" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-63127-02" PrivateAssets="All" Condition="'$(TargetFramework)'=='netstandard2.0'" />
   </ItemGroup>
 
 </Project>
