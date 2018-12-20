@@ -181,9 +181,9 @@ namespace BCrypt.Net.Test
         }
 
         /**
- * Test method for 'BCrypt.VerifyPassword(string, string)'
- * expecting success
- */
+         * Test method for 'BCrypt.VerifyPassword(string, string)'
+         * expecting success
+         */
         [Fact]
         public void TestVerifyPasswordWithDifferentRevisionsSuccess()
         {
@@ -240,7 +240,6 @@ namespace BCrypt.Net.Test
         /**
         * Test method for 'BCrypt.GetPasswordWorkFactor(string)'
         */
-
         [Fact]
         public void TestGetPasswordWorkFactor()
         {
