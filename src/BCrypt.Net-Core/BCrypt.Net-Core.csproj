@@ -5,11 +5,11 @@
     <AssemblyTitle>BCrypt.Net-Core</AssemblyTitle>
     <VersionPrefix>1.6.0</VersionPrefix>
     <Authors>Steve Donaghy (donaghy.steve@googlemail.com)</Authors>
-    <TargetFrameworks>net40;net45;net451;net452;netstandard1.3</TargetFrameworks>
+    <TargetFrameworks>net40;net45;net451;net452;netstandard1.3;netstandard2.0</TargetFrameworks>
     <AssemblyName>BCrypt.Net-Core</AssemblyName>
     <PackageId>BCrypt.Net-Core</PackageId>
     <PackageTags>bcrypt;Cryptography</PackageTags>
-    <PackageReleaseNotes>Fixed issue with .net core 2.1</PackageReleaseNotes>
+    <PackageReleaseNotes>Added support for netstandard 2.0, which should simplify package references for some users.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/neoKushan/BCrypt.Net-Core</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/neoKushan/BCrypt.Net-Core</RepositoryUrl>
