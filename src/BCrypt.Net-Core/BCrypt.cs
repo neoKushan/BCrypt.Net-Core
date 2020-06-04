@@ -403,7 +403,7 @@ namespace BCrypt.Net
         /// <returns>The hashed string.</returns>
         public static string HashString(string source, int workFactor, SaltRevision saltSaltRevision = SaltRevision.Revision2B)
         {
-            return HashPassword(source, GenerateSalt(workFactor));
+            return HashPassword(source, GenerateSalt(workFactor, saltSaltRevision));
         }
 
         /// <summary>
